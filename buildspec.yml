@@ -2,11 +2,19 @@ version: 0.2
 
 phases:
   install:
+    runtime-versions:
+      nodejs: 14
+  pre_build:
     commands:
-      - npm install
+      - npm init --yes
   build:
     commands:
-      - zip -r application.zip *
-artifacts:
-  files:
-    - application.zip
+      - npm install
+      - npm run build
+  artifacts:
+    files:
+      - README.md
+      - app.js
+      - package.json
+      - package-lock.json
+      - public/*
